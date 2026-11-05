@@ -1,0 +1,8 @@
+[Unit]
+Description=Detection des echecs SSH et blocage de la source
+After=firewalld.service
+Requires=firewalld.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/helios-watch-auth.sh

@@ -1,0 +1,11 @@
+[Unit]
+Description=Lance helios-watch-auth toutes les 2 minutes
+
+[Timer]
+OnCalendar=*:0/2
+AccuracySec=10s
+Persistent=no
+Unit=helios-watch-auth.service
+
+[Install]
+WantedBy=timers.target
