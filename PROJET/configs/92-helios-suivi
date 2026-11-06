@@ -1,0 +1,7 @@
+# Delegation pour l'equipe suivi : gerer le portail, rien d'autre
+Cmnd_Alias SUIVI_SVC = /usr/bin/systemctl restart helios-suivi.service, \
+                       /usr/bin/systemctl status --no-pager helios-suivi.service, \
+                       /usr/bin/systemctl start helios-suivi-publish.service
+Cmnd_Alias SUIVI_LOG = /usr/bin/journalctl --no-pager -n 100 -u helios-suivi.service, \
+                       /usr/bin/journalctl --no-pager -n 100 -u helios-suivi-publish.service
+%suivi ALL=(root) SUIVI_SVC, SUIVI_LOG

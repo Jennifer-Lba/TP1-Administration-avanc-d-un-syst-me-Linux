@@ -1,0 +1,28 @@
+[Unit]
+Description=Sauvegarde du portail de suivi
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/sbin/helios-suivi-backup.sh
+
+# Durcissement : lecture partout, ecriture seulement dans les archives
+ProtectSystem=strict
+ReadWritePaths=/srv/helios/archives
+ProtectHome=yes
+PrivateTmp=yes
+NoNewPrivileges=yes
+CapabilityBoundingSet=CAP_DAC_OVERRIDE CAP_DAC_READ_SEARCH
+PrivateDevices=yes
+ProtectKernelTunables=yes
+ProtectKernelModules=yes
+ProtectKernelLogs=yes
+ProtectControlGroups=yes
+ProtectClock=yes
+ProtectHostname=yes
+RestrictAddressFamilies=AF_UNIX
+RestrictNamespaces=yes
+RestrictRealtime=yes
+LockPersonality=yes
+MemoryDenyWriteExecute=yes
+SystemCallArchitectures=native
+SystemCallFilter=@system-service
